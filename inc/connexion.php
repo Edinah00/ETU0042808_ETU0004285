@@ -3,7 +3,7 @@
         static $connect = null;
 
         if ($connect === null) {
-            $connect = mysqli_connect('localhost','root','', 'employees');
+            $connect = mysqli_connect('localhost','root','', 'emprunt_objets');
 
             if (!$connect) {
                 // Arrête le script et affiche une erreur si la connexion échoue

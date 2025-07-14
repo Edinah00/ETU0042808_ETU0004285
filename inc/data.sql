@@ -5,7 +5,7 @@ CREATE TABLE membre_empObj (
     id_membre INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100),
     date_naissance DATE,
-    genre ENUM('H', 'F'),
+    genre VARCHAR(100),
     email VARCHAR(100),
     ville VARCHAR(100),
     mdp VARCHAR(255),
@@ -119,3 +119,13 @@ VALUES
 (35, 1, '2025-07-08', '2025-07-18'),
 (40, 2, '2025-07-09', '2025-07-19'),
 (3, 3, '2025-07-10', '2025-07-20');
+
+
+CREATE or replace view V_emprunt_obj as
+select o.*,e.date_emprunt,e.date_retour,e.id_membre as emprunteur from objet_empObj o
+join emprunt_empObj e on e.id_objet = o.id_objet ;
+
+CREATE or replace view V_objet_categorie as
+select o.*,c.nom_categorie from objet_empObj as o
+join  categorie_objet_empObj as c
+ on c.id_categorie=o.id_categorie;
